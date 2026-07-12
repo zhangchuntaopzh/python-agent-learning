@@ -2,7 +2,17 @@ const state = { events: [], index: -1, timer: null };
 const NODE_LAYOUT = { "用户输入":[50,80,150,60], "规划器":[280,80,150,60], "工具注册表":[510,80,150,60], "大模型模拟":[280,260,150,60], "计算器":[780,200,150,60], "知识库":[980,330,150,60], "记忆":[570,420,160,60], "最终回答":[200,420,150,60] };
 const CONNECTIONS = Object.keys({ "用户输入|规划器":1,"规划器|工具注册表":1,"规划器|大模型模拟":1,"大模型模拟|规划器":1,"工具注册表|计算器":1,"工具注册表|知识库":1,"计算器|记忆":1,"知识库|记忆":1,"工具注册表|记忆":1,"记忆|大模型模拟":1,"大模型模拟|最终回答":1,"记忆|最终回答":1 });
 function intersectsNode(segment, node, endpoints) { return !endpoints.includes(node) && segment.x1 < node[0] + node[2] && segment.x2 > node[0] && segment.y1 < node[1] + node[3] && segment.y2 > node[1]; }
-function buildPath(source, target) { const a = NODE_LAYOUT[source], b = NODE_LAYOUT[target]; const x1=a[0]+a[2]/2, y1=a[1]+a[3]/2, x2=b[0]+b[2]/2, y2=b[1]+b[3]/2; const lane=Math.min(y1,y2)-28; return `M${x1} ${y1} V${lane} H${x2} V${y2}`; }
+function buildPath(source, target) {
+  const a = NODE_LAYOUT[source], b = NODE_LAYOUT[target];
+  const x1 = a[0] + a[2] / 2, y1 = a[1] + a[3] / 2;
+  const x2 = b[0] + b[2] / 2, y2 = b[1] + b[3] / 2;
+  const index = CONNECTIONS.indexOf(`${source}|${target}`);
+  const bend = 70 + (index % 4) * 32;
+  const direction = index % 2 ? -1 : 1;
+  const cx1 = x1 + direction * bend;
+  const cx2 = x2 - direction * bend;
+  return `M${x1} ${y1} C${cx1} ${y1}, ${cx2} ${y2}, ${x2} ${y2}`;
+}
 function routeAll() { CONNECTIONS.forEach(key => { const [source,target]=key.split("|"); const path=document.getElementById(key); if (path) path.setAttribute("d", buildPath(source,target)); }); }
 const task = document.querySelector("#task");
 const status = document.querySelector("#status");
