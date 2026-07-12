@@ -5,6 +5,7 @@ const variables = document.querySelector("#variables");
 const answer = document.querySelector("#answer");
 const packet = document.querySelector("#packet");
 const packetLabel = document.querySelector("#packet-label");
+const llmSimulation = document.querySelector("#llm-simulation");
 
 function pathFor(source, target) { return document.getElementById(`${source}|${target}`); }
 function stop() { clearInterval(state.timer); state.timer = null; }
@@ -48,7 +49,7 @@ function play() {
 document.querySelector("#task-form").addEventListener("submit", async event => {
   event.preventDefault(); stop(); status.textContent = "正在请求 Agent…";
   try {
-    const response = await fetch("/api/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ task: task.value }) });
+    const response = await fetch("/api/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ task: task.value, use_llm_simulation: llmSimulation.checked }) });
     const data = await response.json(); if (!response.ok) throw new Error(data.error);
     state.events = data.events; answer.textContent = data.answer; reset(); play();
   } catch (error) { status.textContent = `运行失败：${error.message}`; }

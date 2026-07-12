@@ -22,13 +22,14 @@ class AgentHandler(SimpleHTTPRequestHandler):
             size = int(self.headers.get("Content-Length", "0"))
             payload = json.loads(self.rfile.read(size).decode("utf-8"))
             task = str(payload.get("task", "")).strip()
+            use_llm_simulation = payload.get("use_llm_simulation") is True
         except (ValueError, json.JSONDecodeError):
             self._json({"error": "请求格式不正确。"}, 400)
             return
         if not task:
             self._json({"error": "请输入任务。"}, 400)
             return
-        response = Agent().run(task)
+        response = Agent().run(task, use_llm_simulation=use_llm_simulation)
         self._json({"answer": response.answer, "events": response.events})
 
     def _json(self, payload: dict[str, object], status: int = 200) -> None:
