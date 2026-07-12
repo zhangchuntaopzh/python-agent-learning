@@ -17,8 +17,8 @@ class FlowLayoutTests(unittest.TestCase):
     def test_layout_uses_spaced_three_layer_canvas(self):
         page = (Path(__file__).parent.parent / "static" / "index.html").read_text(encoding="utf-8")
         self.assertIn('viewBox="0 0 1180 560"', page)
-        self.assertIn('data-module="计算器"><rect x="780" y="200"', page)
-        self.assertIn('data-module="知识库"><rect x="980" y="330"', page)
+        self.assertIn('data-module="计算器"><rect x="980" y="180"', page)
+        self.assertIn('data-module="知识库"><rect x="980" y="400"', page)
         self.assertIn('data-module="记忆"><rect x="570" y="420"', page)
 
     def test_llm_simulator_has_all_api_paths(self):
