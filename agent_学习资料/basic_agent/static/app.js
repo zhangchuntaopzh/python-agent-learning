@@ -21,7 +21,13 @@ const answer = document.querySelector("#answer");
 const packet = document.querySelector("#packet");
 const packetLabel = document.querySelector("#packet-label");
 const llmSimulation = document.querySelector("#llm-simulation");
+const codeDialog=document.querySelector("#code-dialog"), codeTitle=document.querySelector("#code-title"), codeFile=document.querySelector("#code-file"), codeContent=document.querySelector("#code-content");
+const CODE_MAP={"用户输入":["main.py","task = input('你：').strip()"],"规划器":["planner.py","def create_plan(self, task):\n    if task.startswith('计算 '):\n        return Plan('calculate', 'calculator', task[3:], '使用计算器求值')"],"工具注册表":["tools.py","def run(self, tool_name, tool_input):\n    return self.tools[tool_name](tool_input)"],"大模型模拟":["llm_simulator.py","def complete(self, purpose, messages):\n    return LLMResponse(self.model_name, messages, '本地模拟响应')"],"计算器":["tools.py","tree = ast.parse(expression, mode='eval')\n# 仅允许白名单语法节点"],"知识库":["tools.py","def knowledge_base(question):\n    return ToolResult(True, 'Agent 是能感知、规划、行动的程序。')"],"记忆":["memory.py","self._items.append({'role': role, 'content': content})"],"最终回答":["agent.py","return AgentResponse(answer, events)"]};
 routeAll();
+document.querySelectorAll('.module').forEach(node=>node.addEventListener('click',()=>{const [file,code]=CODE_MAP[node.dataset.module];codeTitle.textContent=node.dataset.module;codeFile.textContent=file;codeContent.textContent=code;codeDialog.showModal();}));
+document.querySelector('#close-code').addEventListener('click',()=>codeDialog.close());
+codeDialog.addEventListener('click',event=>{if(event.target===codeDialog) codeDialog.close();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape') codeDialog.close();});
 
 function pathFor(source, target) { return document.getElementById(`${source}|${target}`); }
 function stop() { clearInterval(state.timer); state.timer = null; }
