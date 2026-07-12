@@ -31,7 +31,7 @@
     <p id="status" class="status" aria-live="polite">尚未运行任务。</p>
     <figure class="flow-wrap" aria-label="Agent 模块流转图">
       <svg id="flow" viewBox="0 0 1180 560" role="img" aria-label="Agent 模块和数据流动路径">
-        <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <defs><filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="crystal"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-opacity=".28"/><feSpecularLighting surfaceScale="4" specularConstant=".7" specularExponent="18" lighting-color="white" result="shine"><feDistantLight azimuth="225" elevation="50"/></feSpecularLighting><feComposite in="shine" in2="SourceAlpha" operator="in" result="light"/><feMerge><feMergeNode in="SourceGraphic"/><feMergeNode in="light"/></feMerge></filter></defs>
         <path id="用户输入|规划器" class="flow-link link-1" d="M200 110 H280"/>
         <path id="规划器|工具注册表" class="flow-link link-2" d="M430 110 H510"/>
         <path id="规划器|大模型模拟" class="flow-link link-3" d="M330 140 V260"/>
@@ -44,8 +44,8 @@
         <path id="记忆|大模型模拟" class="flow-link link-10" d="M650 420 V340 H430 V290"/>
         <path id="大模型模拟|最终回答" class="flow-link link-11" d="M280 290 H180 V420 H275"/>
         <path id="记忆|最终回答" class="flow-link link-12" d="M570 450 H350"/>
-        <g class="module node-user" data-module="用户输入"><rect x="50" y="80" width="150" height="60"/><text x="125" y="116">用户输入</text></g>
-        <g class="module node-planner" data-module="规划器"><rect x="280" y="80" width="150" height="60"/><text x="355" y="116">规划器</text></g>
+        <g class="module node-user" data-module="用户输入"><rect x="50" y="80" width="150" height="60"/><text x="125" y="116">💬 用户输入</text></g>
+        <g class="module node-planner" data-module="规划器"><rect x="280" y="80" width="150" height="60"/><text x="355" y="116">🧭 规划器</text></g>
         <g class="module node-registry" data-module="工具注册表"><rect x="510" y="80" width="150" height="60"/><text x="585" y="116">工具注册表</text></g>
         <g class="module node-llm" data-module="大模型模拟"><rect x="280" y="260" width="150" height="60"/><text x="355" y="296">大模型模拟</text></g>
         <g class="module node-calculator" data-module="计算器"><rect x="780" y="200" width="150" height="60"/><text x="855" y="236">计算器</text></g>
