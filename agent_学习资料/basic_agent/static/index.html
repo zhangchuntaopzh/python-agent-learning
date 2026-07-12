@@ -32,26 +32,26 @@
     <figure class="flow-wrap" aria-label="Agent 模块流转图">
       <svg id="flow" viewBox="0 0 1180 560" role="img" aria-label="Agent 模块和数据流动路径">
         <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-        <path id="用户输入|规划器" class="connection" d="M200 110 H280"/>
-        <path id="规划器|工具注册表" class="connection" d="M430 110 H510"/>
-        <path id="规划器|大模型模拟" class="connection" d="M330 140 V260"/>
-        <path id="大模型模拟|规划器" class="connection" d="M405 260 V140"/>
-        <path id="工具注册表|计算器" class="connection" d="M585 140 V230 H780"/>
-        <path id="工具注册表|知识库" class="connection" d="M660 110 V360 H980"/>
-        <path id="计算器|记忆" class="connection" d="M855 260 V450 H730"/>
-        <path id="知识库|记忆" class="connection" d="M980 360 H1030 V450 H730"/>
-        <path id="工具注册表|记忆" class="connection" d="M585 140 V420"/>
-        <path id="记忆|大模型模拟" class="connection" d="M650 420 V340 H430 V290"/>
-        <path id="大模型模拟|最终回答" class="connection" d="M280 290 H180 V420 H275"/>
-        <path id="记忆|最终回答" class="connection" d="M570 450 H350"/>
-        <g class="module" data-module="用户输入"><rect x="50" y="80" width="150" height="60"/><text x="125" y="116">用户输入</text></g>
-        <g class="module" data-module="规划器"><rect x="280" y="80" width="150" height="60"/><text x="355" y="116">规划器</text></g>
-        <g class="module" data-module="工具注册表"><rect x="510" y="80" width="150" height="60"/><text x="585" y="116">工具注册表</text></g>
-        <g class="module" data-module="大模型模拟"><rect x="280" y="260" width="150" height="60"/><text x="355" y="296">大模型模拟</text></g>
-        <g class="module" data-module="计算器"><rect x="780" y="200" width="150" height="60"/><text x="855" y="236">计算器</text></g>
-        <g class="module" data-module="知识库"><rect x="980" y="330" width="150" height="60"/><text x="1055" y="366">知识库</text></g>
-        <g class="module" data-module="记忆"><rect x="570" y="420" width="160" height="60"/><text x="650" y="456">记忆</text></g>
-        <g class="module" data-module="最终回答"><rect x="200" y="420" width="150" height="60"/><text x="275" y="456">最终回答</text></g>
+        <path id="用户输入|规划器" class="flow-link link-1" d="M200 110 H280"/>
+        <path id="规划器|工具注册表" class="flow-link link-2" d="M430 110 H510"/>
+        <path id="规划器|大模型模拟" class="flow-link link-3" d="M330 140 V260"/>
+        <path id="大模型模拟|规划器" class="flow-link link-4" d="M405 260 V140"/>
+        <path id="工具注册表|计算器" class="flow-link link-5" d="M585 140 V230 H780"/>
+        <path id="工具注册表|知识库" class="flow-link link-6" d="M660 110 V360 H980"/>
+        <path id="计算器|记忆" class="flow-link link-7" d="M855 260 V450 H730"/>
+        <path id="知识库|记忆" class="flow-link link-8" d="M980 360 H1030 V450 H730"/>
+        <path id="工具注册表|记忆" class="flow-link link-9" d="M585 140 V420"/>
+        <path id="记忆|大模型模拟" class="flow-link link-10" d="M650 420 V340 H430 V290"/>
+        <path id="大模型模拟|最终回答" class="flow-link link-11" d="M280 290 H180 V420 H275"/>
+        <path id="记忆|最终回答" class="flow-link link-12" d="M570 450 H350"/>
+        <g class="module node-user" data-module="用户输入"><rect x="50" y="80" width="150" height="60"/><text x="125" y="116">用户输入</text></g>
+        <g class="module node-planner" data-module="规划器"><rect x="280" y="80" width="150" height="60"/><text x="355" y="116">规划器</text></g>
+        <g class="module node-registry" data-module="工具注册表"><rect x="510" y="80" width="150" height="60"/><text x="585" y="116">工具注册表</text></g>
+        <g class="module node-llm" data-module="大模型模拟"><rect x="280" y="260" width="150" height="60"/><text x="355" y="296">大模型模拟</text></g>
+        <g class="module node-calculator" data-module="计算器"><rect x="780" y="200" width="150" height="60"/><text x="855" y="236">计算器</text></g>
+        <g class="module node-knowledge" data-module="知识库"><rect x="980" y="330" width="150" height="60"/><text x="1055" y="366">知识库</text></g>
+        <g class="module node-memory" data-module="记忆"><rect x="570" y="420" width="160" height="60"/><text x="650" y="456">记忆</text></g>
+        <g class="module node-answer" data-module="最终回答"><rect x="200" y="420" width="150" height="60"/><text x="275" y="456">最终回答</text></g>
         <circle id="packet" r="8" visibility="hidden" filter="url(#glow)"/>
         <text id="packet-label" visibility="hidden" text-anchor="middle"></text>
       </svg>

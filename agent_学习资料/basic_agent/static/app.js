@@ -12,6 +12,7 @@ function stop() { clearInterval(state.timer); state.timer = null; }
 function reset() {
   stop(); state.index = -1; packet.setAttribute("visibility", "hidden"); packetLabel.setAttribute("visibility", "hidden");
   document.querySelectorAll(".module").forEach(node => node.classList.remove("is-active"));
+  document.querySelectorAll("path[id]").forEach(path => path.classList.remove("is-active"));
   status.textContent = state.events.length ? "已重置到运行前。" : "尚未运行任务。";
   variables.textContent = "等待播放。";
 }
@@ -37,6 +38,8 @@ function showEvent(index) {
   const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
   label.setAttribute("class", "running-label"); label.setAttribute("x", Number(rect.getAttribute("x")) + Number(rect.getAttribute("width")) / 2);
   label.setAttribute("y", Number(rect.getAttribute("y")) + 18); label.textContent = "▶ 正在运行"; activeNode.append(label);
+  document.querySelectorAll("path[id]").forEach(path => path.classList.remove("is-active"));
+  pathFor(event.source, event.target)?.classList.add("is-active");
   movePacket(event.source, event.target, event.variables);
   status.textContent = `第 ${event.step} / ${state.events.length} 步：${event.target} 正在运行`;
 }
