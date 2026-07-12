@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>基础 Agent 流程演示</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>基础 Agent：运行过程可视化</h1>
+    <p class="intro">输入任务，观察 Agent 如何规划、调用工具、记录记忆并生成回答。</p>
+    <form id="task-form">
+      <label for="task">任务</label>
+      <input id="task" value="计算 (12 + 3) * 2" autocomplete="off">
+      <button type="submit">运行</button>
+    </form>
+    <div class="examples" aria-label="示例任务">
+      <button type="button" data-example="什么是 agent？">知识查询</button>
+      <button type="button" data-example="计算 (12 + 3) * 2">计算</button>
+      <button type="button" data-example="帮我开始学习">普通对话</button>
+    </div>
+    <section class="controls" aria-label="播放控制">
+      <button id="play" type="button">自动播放</button>
+      <button id="pause" type="button">暂停</button>
+      <button id="previous" type="button">上一步</button>
+      <button id="next" type="button">下一步</button>
+      <button id="reset" type="button">重置</button>
+    </section>
+    <p id="status" class="status" aria-live="polite">尚未运行任务。</p>
+    <figure class="flow-wrap" aria-label="Agent 模块流转图">
+      <svg id="flow" viewBox="0 0 980 420" role="img" aria-label="Agent 模块和数据流动路径">
+        <defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <path id="用户输入|规划器" class="connection" d="M180 95 H300"/>
+        <path id="规划器|工具注册表" class="connection" d="M460 95 H570"/>
+        <path id="工具注册表|计算器" class="connection" d="M680 125 V230 H735"/>
+        <path id="工具注册表|知识库" class="connection" d="M680 125 V310 H735"/>
+        <path id="计算器|记忆" class="connection" d="M845 250 V365 H650"/>
+        <path id="知识库|记忆" class="connection" d="M845 330 V365 H650"/>
+        <path id="工具注册表|记忆" class="connection" d="M625 125 V365"/>
+        <path id="记忆|最终回答" class="connection" d="M490 365 H290"/>
+        <g class="module" data-module="用户输入"><rect x="40" y="65" width="140" height="60"/><text x="110" y="101">用户输入</text></g>
+        <g class="module" data-module="规划器"><rect x="320" y="65" width="140" height="60"/><text x="390" y="101">规划器</text></g>
+        <g class="module" data-module="工具注册表"><rect x="570" y="65" width="140" height="60"/><text x="640" y="101">工具注册表</text></g>
+        <g class="module" data-module="计算器"><rect x="735" y="220" width="130" height="60"/><text x="800" y="256">计算器</text></g>
+        <g class="module" data-module="知识库"><rect x="735" y="300" width="130" height="60"/><text x="800" y="336">知识库</text></g>
+        <g class="module" data-module="记忆"><rect x="490" y="335" width="160" height="60"/><text x="570" y="371">记忆</text></g>
+        <g class="module" data-module="最终回答"><rect x="130" y="335" width="160" height="60"/><text x="210" y="371">最终回答</text></g>
+        <circle id="packet" r="8" visibility="hidden" filter="url(#glow)"/>
+        <text id="packet-label" visibility="hidden" text-anchor="middle"></text>
+      </svg>
+    </figure>
+    <section class="detail" aria-label="当前传递的变量">
+      <h2>连线上传递的变量</h2>
+      <p id="variables">等待运行。</p>
+    </section>
+    <section class="detail" aria-label="最终回答">
+      <h2>最终回答</h2>
+      <p id="answer">等待运行。</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
