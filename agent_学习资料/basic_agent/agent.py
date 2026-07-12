@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 
 from events import EventCollector
+from llm_simulator import LLMSimulator
 from memory import Memory
 from planner import Plan, Planner
 from tools import ToolRegistry
@@ -22,10 +23,18 @@ class Agent:
         self.planner = Planner()
         self.tools = ToolRegistry()
         self.memory = Memory()
+        self.llm = LLMSimulator()
 
-    def run(self, task: str) -> AgentResponse:
+    def run(self, task: str, use_llm_simulation: bool = False) -> AgentResponse:
         collector = EventCollector()
         collector.add("用户输入", "规划器", {"task": task})
+        if use_llm_simulation:
+            planning_response = self.llm.complete("plan", [{"role": "user", "content": task}])
+            collector.add("规划器", "大模型模拟", {
+                "model": planning_response.model,
+                "messages": planning_response.messages,
+            })
+            collector.add("大模型模拟", "规划器", {"response": planning_response.response})
         plan = self.planner.create_plan(task)
         collector.add("规划器", "工具注册表", {"plan": plan.description, "tool_name": plan.tool_name or "无"})
         if plan.tool_name:
@@ -39,7 +48,15 @@ class Agent:
             collector.add("工具注册表", "记忆", {"answer": answer})
         self.memory.add("user", task)
         self.memory.add("assistant", answer)
-        collector.add("记忆", "最终回答", {"answer": answer})
+        if use_llm_simulation:
+            answer_response = self.llm.complete("answer", [{"role": "assistant", "content": answer}])
+            collector.add("记忆", "大模型模拟", {
+                "model": answer_response.model,
+                "messages": answer_response.messages,
+            })
+            collector.add("大模型模拟", "最终回答", {"response": answer_response.response, "answer": answer})
+        else:
+            collector.add("记忆", "最终回答", {"answer": answer})
         return AgentResponse(answer, [event.to_dict() for event in collector.events()])
 
     @staticmethod
