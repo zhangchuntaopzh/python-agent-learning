@@ -3,6 +3,12 @@ from pathlib import Path
 
 
 class FlowLayoutTests(unittest.TestCase):
+    def test_flow_is_built_by_automatic_router(self):
+        script = (Path(__file__).parent.parent / "static" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("NODE_LAYOUT", script)
+        self.assertIn("CONNECTIONS", script)
+        self.assertIn("buildPath", script)
+        self.assertIn("intersectsNode", script)
     def test_tool_result_paths_leave_nodes_before_turning(self):
         page = (Path(__file__).parent.parent / "static" / "index.html").read_text(encoding="utf-8")
         self.assertIn('id="计算器|记忆" class="flow-link link-7" d="M855 260 V450 H730"', page)
