@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="card">
+    <text class="eyebrow">你的总分</text>
+    <text class="score">{{score}} / 21</text>
+    <text class="title">{{result.level}}</text>
+    <text class="body">{{result.message}}</text>
+    <text class="notice">这是一份自我感受整理，不能替代医疗诊断。若感到难以应对或有即时安全风险，请联系当地紧急服务、心理危机支持机构或可信赖的人。</text>
+    <button class="primary" bindtap="restart">重新测评</button>
+  </view>
+</view>

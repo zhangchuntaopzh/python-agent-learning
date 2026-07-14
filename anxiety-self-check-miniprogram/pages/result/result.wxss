@@ -1,0 +1,12 @@
+.score {
+  display: block;
+  color: #0f766e;
+  font-size: 64rpx;
+  font-weight: 700;
+  margin: 16rpx 0;
+}
+
+.notice {
+  display: block;
+  margin-top: 32rpx;
+}

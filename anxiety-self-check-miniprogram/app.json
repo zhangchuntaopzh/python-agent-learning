@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/quiz/quiz",
+    "pages/result/result"
+  ],
+  "window": {
+    "navigationBarTitleText": "焦虑自评",
+    "navigationBarBackgroundColor": "#F7FAFC",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F7FAFC"
+  }
+}

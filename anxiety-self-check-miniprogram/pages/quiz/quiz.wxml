@@ -1,0 +1,22 @@
+<view class="page">
+  <text class="progress">第 {{currentQuestion + 1}} / {{questions.length}} 题</text>
+  <view class="card">
+    <text class="eyebrow">近两周</text>
+    <text class="question">你有多常出现以下情况？</text>
+    <text class="prompt">{{questions[currentQuestion].text}}</text>
+
+    <view
+      wx:for="{{options}}"
+      wx:key="*this"
+      class="option {{selected === index ? 'selected' : ''}}"
+      data-value="{{index}}"
+      bindtap="chooseOption"
+    >
+      {{index}} 分 · {{item}}
+    </view>
+
+    <button class="primary" disabled="{{selected === null}}" bindtap="nextQuestion">
+      {{currentQuestion === questions.length - 1 ? '查看结果' : '下一题'}}
+    </button>
+  </view>
+</view>

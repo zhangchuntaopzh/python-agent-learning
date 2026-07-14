@@ -1,0 +1,4 @@
+.notice {
+  display: block;
+  margin-top: 32rpx;
+}

@@ -1,0 +1,43 @@
+page {
+  background: #f7fafc;
+  color: #1f2937;
+}
+
+.page {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 48rpx 32rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 28rpx;
+  padding: 48rpx 40rpx;
+  box-shadow: 0 12rpx 28rpx rgba(31, 41, 55, 0.08);
+}
+
+.eyebrow {
+  color: #0f766e;
+  font-size: 28rpx;
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  margin: 24rpx 0;
+}
+
+.body,
+.notice {
+  color: #4b5563;
+  font-size: 30rpx;
+  line-height: 1.7;
+}
+
+.primary {
+  margin-top: 48rpx;
+  background: #0f766e;
+  color: #ffffff;
+  border-radius: 16rpx;
+}
