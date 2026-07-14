@@ -4,6 +4,7 @@
     <text class="eyebrow">近两周</text>
     <text class="question">你有多常出现以下情况？</text>
     <text class="prompt">{{questions[currentQuestion].text}}</text>
+    <text class="question-tip">{{questions[currentQuestion].tip}}</text>
 
     <view
       wx:for="{{options}}"
