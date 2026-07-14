@@ -1,0 +1,8 @@
+<view wx:if="{{originalUnavailable}}" class="page">
+  <view class="state">
+    <text>原文暂不可用</text>
+    <text>打开中国新闻网原文需要微信业务域名授权；本小程序当前未满足该前提，因此不会尝试打开原文。</text>
+    <text>业务域名授权只能由小程序项目主体在微信公众平台完成，阅读者无法自行授权中国新闻网域名。请返回资讯列表查看标题和发布日期。</text>
+  </view>
+</view>
+<web-view src="{{url}}" wx:else />
