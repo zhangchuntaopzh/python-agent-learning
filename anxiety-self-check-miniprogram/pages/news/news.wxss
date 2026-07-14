@@ -1,0 +1,12 @@
+.page { min-height: 100vh; padding: 32rpx; background: #f7fafc; box-sizing: border-box; }
+.intro-card, .news-item, .state { padding: 28rpx; border-radius: 20rpx; background: #ffffff; box-shadow: 0 8rpx 22rpx rgba(42, 79, 105, 0.08); }
+.title, .news-title { display: block; color: #263b4a; font-weight: 600; }
+.title { font-size: 38rpx; }
+.body, .status, .news-date, .news-link { display: block; margin-top: 14rpx; color: #607487; font-size: 26rpx; line-height: 1.6; }
+.status { color: #8a6b2f; }
+.news-list { margin-top: 24rpx; }
+.news-item { margin-bottom: 18rpx; }
+.news-title { font-size: 30rpx; line-height: 1.5; }
+.news-link { color: #3d6f91; }
+.state { margin-top: 24rpx; color: #607487; text-align: center; }
+.retry { margin-top: 22rpx; color: #ffffff; background: #4d8fb6; }
