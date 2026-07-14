@@ -1,4 +1,5 @@
 const { QUESTIONS, calculateTotal } = require('../../utils/assessment');
+const { getAvatar } = require('../../utils/avatars');
 
 const OPTIONS = ['完全没有', '偶尔', '经常', '几乎每天'];
 
@@ -8,7 +9,12 @@ Page({
     options: OPTIONS,
     currentQuestion: 0,
     selected: null,
-    answers: []
+    answers: [],
+    selectedAvatarId: 'cloud'
+  },
+
+  onLoad(query) {
+    this.setData({ selectedAvatarId: getAvatar(query.avatarId).id });
   },
 
   chooseOption(event) {
@@ -25,7 +31,9 @@ Page({
 
     if (isLastQuestion) {
       const score = calculateTotal(answers);
-      wx.redirectTo({ url: `../result/result?score=${score}` });
+      wx.redirectTo({
+        url: `../result/result?score=${score}&avatarId=${this.data.selectedAvatarId}`
+      });
       return;
     }
 
