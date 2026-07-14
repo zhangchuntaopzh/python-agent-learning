@@ -2,3 +2,51 @@
   display: block;
   margin-top: 32rpx;
 }
+
+.avatar-heading {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-top: 36rpx;
+}
+
+.avatar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.avatar-option {
+  box-sizing: border-box;
+  width: calc(50% - 10rpx);
+  min-height: 184rpx;
+  border: 2rpx solid #d1d5db;
+  border-radius: 20rpx;
+  padding: 16rpx;
+  text-align: center;
+}
+
+.avatar-selected {
+  background: #ccfbf1;
+  border-color: #0f766e;
+}
+
+.avatar-image {
+  display: block;
+  width: 112rpx;
+  height: 112rpx;
+  margin: 0 auto 8rpx;
+}
+
+.avatar-label {
+  color: #374151;
+  font-size: 24rpx;
+}
+
+.secondary {
+  margin-top: 20rpx;
+  color: #3d6f91;
+  background: #eaf4fa;
+  border: 1rpx solid #c8dfec;
+}
