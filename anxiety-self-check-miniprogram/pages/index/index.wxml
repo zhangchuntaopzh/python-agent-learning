@@ -3,7 +3,21 @@
     <text class="eyebrow">近两周自我感受</text>
     <text class="title">测测我有多焦虑</text>
     <text class="body">用 7 道小题整理此刻的感受。它不能替代医疗诊断。</text>
+    <text class="avatar-heading">选择一个陪伴头像</text>
+    <view class="avatar-grid">
+      <view
+        wx:for="{{avatars}}"
+        wx:key="id"
+        class="avatar-option {{selectedAvatarId === item.id ? 'avatar-selected' : ''}}"
+        data-id="{{item.id}}"
+        bindtap="selectAvatar"
+      >
+        <image class="avatar-image" src="{{item.src}}" mode="aspectFit" />
+        <text class="avatar-label">{{item.label}}</text>
+      </view>
+    </view>
     <button class="primary" bindtap="goToQuiz">开始自评</button>
+    <button class="secondary" bindtap="goToNews">查看心理健康资讯</button>
   </view>
   <text class="notice">若感到难以应对或有即时安全风险，请尽快联系当地紧急服务、心理危机支持机构或可信赖的人。</text>
 </view>
