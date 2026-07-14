@@ -1,6 +1,7 @@
 <view class="page">
   <view class="card">
     <text class="eyebrow">你的总分</text>
+    <image class="result-avatar" src="{{avatar.src}}" mode="aspectFit" />
     <text class="score">{{score}} / 21</text>
     <text class="title">{{result.level}}</text>
     <text class="body">{{result.message}}</text>
