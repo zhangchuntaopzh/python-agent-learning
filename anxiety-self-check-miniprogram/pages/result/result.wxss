@@ -10,3 +10,10 @@
   display: block;
   margin-top: 32rpx;
 }
+
+.result-avatar {
+  display: block;
+  width: 144rpx;
+  height: 144rpx;
+  margin: 24rpx auto 8rpx;
+}
