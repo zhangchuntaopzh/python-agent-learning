@@ -7,6 +7,15 @@ test('provides seven questions', () => {
   assert.equal(QUESTIONS.length, 7);
 });
 
+test('every assessment question includes a non-diagnostic calming tip', () => {
+  assert.equal(QUESTIONS.length, 7);
+  for (const question of QUESTIONS) {
+    assert.equal(typeof question.tip, 'string');
+    assert.ok(question.tip.trim().length > 0);
+    assert.doesNotMatch(question.tip, /诊断|处方|治愈/);
+  }
+});
+
 test('adds seven valid answers', () => {
   assert.equal(calculateTotal([0, 1, 2, 3, 0, 1, 2]), 9);
 });
