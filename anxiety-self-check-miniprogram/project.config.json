@@ -1,0 +1,11 @@
+{
+  "appid": "wx6ac3c2f7d11c4ccf",
+  "projectname": "焦虑自评 Demo",
+  "compileType": "miniprogram",
+  "cloudfunctionRoot": "cloudfunctions",
+  "setting": {
+    "es6": true,
+    "minified": false,
+    "minifyWXML": true
+  }
+}

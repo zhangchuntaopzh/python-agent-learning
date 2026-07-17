@@ -1,0 +1,54 @@
+.notice {
+  display: block;
+  margin-top: 32rpx;
+}
+
+.avatar-heading {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-top: 36rpx;
+}
+
+.avatar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.avatar-option {
+  box-sizing: border-box;
+  width: 48%;
+  min-height: 184rpx;
+  margin-bottom: 20rpx;
+  border: 2rpx solid #d1d5db;
+  border-radius: 20rpx;
+  padding: 16rpx;
+  text-align: center;
+}
+
+.avatar-selected {
+  background: #ccfbf1;
+  border-color: #0f766e;
+}
+
+.avatar-image {
+  display: block;
+  width: 70%;
+  max-width: 112rpx;
+  height: auto;
+  margin: 0 auto 8rpx;
+}
+
+.avatar-label {
+  color: #374151;
+  font-size: 24rpx;
+}
+
+.secondary {
+  margin-top: 20rpx;
+  color: #3d6f91;
+  background: #eaf4fa;
+  border: 1rpx solid #c8dfec;
+}
