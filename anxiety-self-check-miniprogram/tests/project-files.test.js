@@ -49,6 +49,14 @@ test('home page provides selectable avatars and passes the selection onward', ()
   assert.match(quiz, /avatarId/);
 });
 
+test('home avatar grid stays two columns with proportionate images', () => {
+  const style = fs.readFileSync(path.join(root, 'pages/index/index.wxss'), 'utf8');
+  assert.match(style, /\.avatar-grid\s*\{[\s\S]*justify-content:\s*space-between/);
+  assert.match(style, /\.avatar-option\s*\{[\s\S]*width:\s*48%/);
+  assert.match(style, /\.avatar-image\s*\{[\s\S]*width:\s*70%/);
+  assert.match(style, /\.avatar-image\s*\{[\s\S]*max-width:\s*112rpx/);
+});
+
 test('result page renders the selected avatar and preserves it on restart', () => {
   const script = fs.readFileSync(path.join(root, 'pages/result/result.js'), 'utf8');
   const page = fs.readFileSync(path.join(root, 'pages/result/result.wxml'), 'utf8');
